@@ -1,0 +1,16 @@
+<div class="start-search">
+	<p class="start-search__select-text">
+		Выберите способ, которым вы хотите начать поиск.
+	</p>
+	<div class="start-search__switch">
+		<div class="start-search__switch-item start-search__switch-item_list _selected" data-category="list">
+			<p class="start-search__switch-title">Списком</p>
+		</div>
+		<div class="start-search__switch-item start-search__switch-item_file" data-category="file">
+			<p class="start-search__switch-title">Файлом</p>
+		</div>
+	</div>
+	{{> search-list}}
+	{{> search-file}}
+
+</div>

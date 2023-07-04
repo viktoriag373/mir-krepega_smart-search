@@ -1,0 +1,44 @@
+.search-file {
+	margin-top: 24px;
+	display: none;
+	&.open {
+		display: block;
+	}
+
+	&__descriptions {
+		margin-bottom: 16px;
+	}
+
+	&__description-item {
+	}
+
+	&__button {
+	}
+
+	&__button-icon {
+	}
+
+	&__samples {
+		display: flex;
+		align-items: center;
+		margin-bottom: 23px;
+	}
+
+	&__sample-item {
+		margin-right: 16px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__sample-img {
+		margin-bottom: 4px;
+	}
+
+	&__sample-text {
+		color: #757575;
+		font-size: 14px;
+		line-height: 18px;
+	}
+}

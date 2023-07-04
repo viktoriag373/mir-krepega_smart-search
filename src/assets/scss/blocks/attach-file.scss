@@ -1,0 +1,255 @@
+.attach-file {
+	&__form-input {
+		// background: #ffffff;
+		// border: 1px solid #eaeaea;
+		// border-radius: 6px;
+		// width: 100%;
+		// font-size: 13px;
+		// line-height: 138%;
+		// color: #333333;
+		// height: 42px;
+		// padding-top: 16px;
+		// padding-left: 10px;
+		// padding-right: 12px;
+		// font-family: "Jost", sans-serif;
+		// @media (max-width: 481px) {
+		// 	padding-top: 16px;
+		// 	padding-left: 11px;
+		// }
+
+		&:focus,
+		&.input_filled {
+			border: 1px solid #005188;
+		}
+		&:focus + label,
+		&.input_filled + label {
+			transform: translateY(-10px);
+			font-size: 11px;
+			line-height: 127%;
+			@media (max-width: 481px) {
+				transform: translateY(-10px);
+			}
+		}
+	}
+
+
+	&__wrap-input-file {
+		position: relative;
+		display: flex;
+		align-items: baseline;
+		justify-content: center;
+		border: 1px dashed #eaeaea;
+		border-radius: 6px;
+		cursor: pointer;
+		margin-bottom: 24px;
+		width: 100%;
+		min-height: 50px;
+		overflow: hidden;
+		padding-top: 15px;
+		padding-bottom: 20px;
+		padding-right: 24px;
+		padding-left: 24px;
+		transition: background 0.2s;
+		@media (max-width: 481px) {
+			min-height: 52px;
+			margin-bottom: 13px;
+			margin-top: 2px;
+		}
+
+		&.dragover {
+			background-color: #fafafa;
+		}
+
+		& input[type="file"] {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+			display: block;
+			width: 0;
+			height: 0;
+		}
+
+		&.added {
+			border: 1px solid #eaeaea;
+			padding-right: 35px;
+			padding-left: 28px;
+			padding-top: 17px;
+			padding-bottom: 22px;
+			justify-content: flex-start;
+			@media (max-width: 481px) {
+				padding-left: 11px;
+				padding-right: 25px;
+				margin-top: 0;
+			}
+			.attach-file__label-file-text {
+				font-size: 16px;
+				line-height: 22px;
+
+				color: #333333;
+				@media (max-width: 481px) {
+					white-space: nowrap;
+				}
+			}
+			.attach-file__label-file-text-small {
+				display: none;
+			}
+
+			.attach-file__input-icon {
+				display: none;
+				margin-right: 13px;
+				
+				&_file {
+					display: block;
+					width: 24px;
+					@media (max-width: 481px) {
+						width: 13px;
+						margin-right: 12px;
+					}
+				}
+			}
+
+			.attach-file__wrap-file-size {
+				display: flex;
+				font-size: 14px;
+				line-height: 18px;
+			}
+
+			.attach-file__input-file-clear {
+				display: flex;
+			}
+		}
+	}
+
+	&__input-file {
+	}
+
+	&__label-file {
+		overflow: hidden;
+		margin-top: 6px;
+		@media (max-width: 481px) {
+			margin-top: 0;
+		}
+	}
+
+	&__wrap-label-file-text {
+		display: flex;
+		align-items: center;
+	}
+
+	&__label-file-text {
+		font-size: 16px;
+		line-height: 22px;
+		color: #757575;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@media (max-width: 481px) {
+			white-space: inherit;
+			font-size: 13px;
+			line-height: 138%;
+		}
+
+
+		span {
+			color: $mainColor;
+		}
+	}
+	
+	&__label-file-text-small {
+		font-size: 14px;
+		line-height: 18px;
+		color: #757575;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 4px;
+
+		@media (max-width: 481px) {
+			white-space: inherit;
+			font-size: 13px;
+			line-height: 138%;
+		}
+
+	}
+
+	&__wrap-file-size {
+		font-size: 11px;
+		line-height: 127%;
+		color: #757575;
+		display: none;
+		align-items: center;
+	}
+	&__file-size {
+		// font-size: 11px;
+		// line-height: 127%;
+		// color: #757575;
+	}
+
+	&__input-file-clear {
+		position: absolute;
+		top: 0px;
+		bottom: 0;
+		right: 23px;
+		margin: auto 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 33px;
+		height: 33px;
+		background: #e5e6ea;
+		border-radius: 50%;
+		transition: all 0.3s;
+		display: none;
+		@media (max-width: 481px) {
+			right: 8px;
+			width: 16px;
+			height: 16px;
+		}
+
+		&:hover {
+			transform: scale(1.4);
+			cursor: pointer;
+		}
+		&::before,
+		&::after {
+			position: absolute;
+			content: " ";
+			z-index: 101;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 50%;
+			height: 1px;
+			transition: all 0.3s ease 0s;
+			background: $mainColor;
+			border-radius: 50px;
+			@media (max-width: 481px) {
+				width: 50%;
+			}
+		}
+		&::before {
+			top: 50%;
+			transform: rotate(-45deg) translate(0px, -25%);
+		}
+		&::after {
+			bottom: 0;
+			top: 50%;
+			transform: rotate(45deg) translate(0px, -25%);
+		}
+	}
+
+	&__input-icon {
+		margin-right: 8px;
+		@media (max-width: 481px) {
+			margin-right: 8px;
+			width: 12px;
+		}
+
+		&_file {
+			display: none;
+		}
+	}
+}

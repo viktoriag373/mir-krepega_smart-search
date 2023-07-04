@@ -1,0 +1,42 @@
+.start-search {
+	&__select-text {
+		color: #757575;
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 15px;
+	}
+
+	&__switch {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 7px;
+		background: #e5e6ea;
+		max-width: 508px;
+		width: 100%;
+		padding: 4px 6px;
+		margin-bottom: 16px;
+	}
+
+	&__switch-item {
+		width: 49.8%;
+		text-align: center;
+		padding: 6px;
+		cursor: pointer;
+		font-size: 14px;
+		line-height: 18px;
+
+		&_list {
+		}
+
+		&_file {
+		}
+
+		&._selected {
+			color: #fff;
+			border-radius: 4px;
+			background: #005188;
+		}
+	}
+
+}

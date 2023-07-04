@@ -1,0 +1,45 @@
+.search-list {
+
+
+	&__descriptions {
+		
+	}
+
+	&__description-item {
+		
+	}
+
+	&__description-img-info {
+	}
+
+	&__form-request {
+	}
+
+	&__textarea {
+		display: block;
+		width: 100%;
+		border-radius: 6px;
+		border: 1px solid #eaeaea;
+		background: #fff;
+		resize: none;
+		height: 160px;
+		margin-bottom: 24px;
+		color: #757575;
+		font-size: 14px;
+		line-height: 18px;
+		padding: 12px 11px;
+		font-family: inherit;
+
+		&:focus {
+			border: 1px solid #757575;
+			color: #333;
+		}
+	}
+
+	&__button {
+	}
+
+	&__button-icon {
+
+	}
+}

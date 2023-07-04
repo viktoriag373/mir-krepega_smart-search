@@ -1,0 +1,58 @@
+@import "vendor/reset";
+@import "_vars";
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+body {
+	font-family: "Jost", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.667vw;
+	height: 100%;
+	background: #EFF3F4;
+	color: #333;
+
+	&._lock {
+		overflow: hidden;
+		&::after {
+			content: " ";
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 2;
+		}
+	}
+}
+
+.page-smart-search {
+	overflow-x: hidden;
+
+	.title-h2 {
+		font-weight: 500;
+		font-size: 80px;
+		line-height: 106%;
+		letter-spacing: -0.03em;
+		@media (max-width: 768px) {
+			font-size: 40px;
+		}
+	}
+	
+
+	/* Blocks */
+	@import "blocks/container";
+	@import "blocks/button";
+	@import "blocks/attach-file";
+
+	@import "blocks/smart-search";
+	@import "blocks/start-search";
+	@import "blocks/search-list";
+	@import "blocks/search-file";
+}
