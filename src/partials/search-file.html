@@ -1,6 +1,7 @@
 <div class="search-file search-block" data-category="file">
 	{{> attach-file}}
-	<div class="search-file__descriptions smart-search__description">
+
+	<div class="search-file__descriptions smart-search__description skeleton">
 		<p class="search-file__description-item smart-search__description-item">
 			Название каждого товара должно начинаться на новой строке.
 		</p>
@@ -14,20 +15,29 @@
 
 	<div class="search-file__samples">
 		<div class="search-file__sample-item">
-			<img src="assets/images/img/sample-1.png" alt="" class="search-file__sample-img">
-			<p class="search-file__sample-text">csv, txt</p>
+			<div class="search-file__sample-wrap-img skeleton">
+				<img src="assets/images/img/sample-1.png" alt="" class="search-file__sample-img">
+			</div>
+
+			<p class="search-file__sample-text skeleton">csv, txt</p>
 		</div>
 		<div class="search-file__sample-item">
-			<img src="assets/images/img/sample-2.png" alt="" class="search-file__sample-img">
-			<p class="search-file__sample-text">xls</p>
+			<div class="search-file__sample-wrap-img skeleton">
+				<img src="assets/images/img/sample-2.png" alt="" class="search-file__sample-img">
+			</div>
+			<p class="search-file__sample-text skeleton">xls</p>
 		</div>
 	</div>
 
 
-	<button class="search-file__button button">
+	<button class="search-file__button button-start-search button">
 		Начать поиск
 		<img src="assets/images/icon/search.svg" alt="" class="search-file__button-icon button__icon">
 	</button>
 
+	<div class="smart-search__progressbar">
+		{{> progressbar}}
+	</div>
 
 </div>
+

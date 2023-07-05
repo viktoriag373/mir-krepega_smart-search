@@ -1,21 +1,7 @@
 .attach-file {
+	min-width: 100%;
+	margin-bottom: 24px;
 	&__form-input {
-		// background: #ffffff;
-		// border: 1px solid #eaeaea;
-		// border-radius: 6px;
-		// width: 100%;
-		// font-size: 13px;
-		// line-height: 138%;
-		// color: #333333;
-		// height: 42px;
-		// padding-top: 16px;
-		// padding-left: 10px;
-		// padding-right: 12px;
-		// font-family: "Jost", sans-serif;
-		// @media (max-width: 481px) {
-		// 	padding-top: 16px;
-		// 	padding-left: 11px;
-		// }
 
 		&:focus,
 		&.input_filled {
@@ -41,7 +27,7 @@
 		border: 1px dashed #eaeaea;
 		border-radius: 6px;
 		cursor: pointer;
-		margin-bottom: 24px;
+		
 		width: 100%;
 		min-height: 50px;
 		overflow: hidden;
@@ -50,11 +36,11 @@
 		padding-right: 24px;
 		padding-left: 24px;
 		transition: background 0.2s;
-		@media (max-width: 481px) {
-			min-height: 52px;
-			margin-bottom: 13px;
-			margin-top: 2px;
-		}
+		// @media (max-width: 481px) {
+		// 	min-height: 52px;
+		// 	margin-bottom: 13px;
+		// 	margin-top: 2px;
+		// }
 
 		&.dragover {
 			background-color: #fafafa;

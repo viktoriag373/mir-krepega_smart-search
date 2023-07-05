@@ -1,0 +1,33 @@
+.progressbar {
+	&__line {
+		width: 100%;
+		height: 16px;
+		margin-bottom: 10px;
+		border-radius: 13px;
+		background: #e5e6ea;
+		overflow: hidden;
+
+	}
+
+	&__line-value {
+		height: 100%;
+		width: 43px;//временное
+		background: $mainColor;
+		border-radius: 13px;
+	}
+
+	&__wrap-description {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #757575;
+		font-size: 16px;
+		line-height: 22px;
+	}
+
+	&__description {
+	}
+
+	&__value-finsh {
+	}
+}

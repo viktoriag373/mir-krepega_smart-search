@@ -5,6 +5,7 @@
 	padding: 9px 26px 8px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	border-radius: 4px;
 	background: #005188;
 	border: none;
@@ -12,5 +13,10 @@
 
 	&__icon {
 		margin-left: 12px;
+	}
+}
+.button-start-search {
+	&.hidden {
+		display: none;
 	}
 }

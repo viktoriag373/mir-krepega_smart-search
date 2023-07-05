@@ -31,14 +31,17 @@
 			margin-right: 0;
 		}
 	}
-
-	&__sample-img {
+	&__sample-wrap-img {
 		margin-bottom: 4px;
+	}
+	&__sample-img {
+		
 	}
 
 	&__sample-text {
 		color: #757575;
 		font-size: 14px;
 		line-height: 18px;
+		min-width: 43px;
 	}
 }

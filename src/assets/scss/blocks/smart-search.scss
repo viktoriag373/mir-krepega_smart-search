@@ -59,4 +59,14 @@
 			margin-bottom: 0;
 		}
 	}
+
+	&__progressbar {
+		margin-top: 24px;
+		display: none;
+		
+
+		&.visible {
+			display: block;
+		}
+	}
 }
