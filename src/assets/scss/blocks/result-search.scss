@@ -1,0 +1,255 @@
+.result-search {
+	display: none;//временно
+
+	&.active {
+		display: block;
+	}
+	&__description {
+		color: #757575;
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 22px;
+	}
+
+	&__mass-selection {
+		margin-bottom: 8px;
+	}
+
+	&__wrap-items {
+		margin-bottom: 32px;
+	}
+
+	&__item {
+		padding: 24px 35px 23px 16px;
+		border-bottom: 1px solid #eaeaea;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__wrap-title {
+	}
+
+	&__wrap-select {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	&__checkbox {
+		position: relative;
+		cursor: pointer;
+	}
+
+	&__icon {
+		display: block;
+		background: transparent;
+		border-radius: 4px;
+		box-sizing: border-box;
+		border: 1px solid #afafaf;
+		height: 16px;
+		transition: all 0.25s cubic-bezier(0.4, 0, 0.23, 1);
+		width: 16px;
+		margin-right: 8px;
+		&:hover {
+			border: 1px solid $mainColor;
+		}
+
+		&_checked {
+			border: 1px solid $mainColor;
+			background-color: $mainColor;
+		}
+	}
+
+	&__title-request {
+		font-size: 14px;
+		line-height: 18px;
+		max-width: 258px;
+	}
+
+	&__wrap-choose-relevant {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		max-width: 350px;
+		width: 100%;
+		margin-left: auto;
+		position: relative;
+	}
+
+	&__indicator {
+		margin-right: 8px;
+		width: 12px;
+		height: 12px;
+		margin-top: 3px;
+	}
+
+	&__wrap-selected {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		cursor: pointer;
+	}
+
+	&__selected-title {
+		font-size: 14px;
+		line-height: 18px;
+		margin-right: auto;
+		max-width: 297px;
+	}
+
+	&__selector {
+		position: absolute;
+		right: -1px;
+		top: 140%;
+		border-radius: 6px;
+		border: 1px solid #eaeaea;
+		background: #fff;
+		z-index: 20;
+		max-width: 344px;
+
+		width: 100%;
+		&.hidden {
+			display: none;
+		}
+	}
+
+	&__wrap-selector {
+		margin-right: 4px;
+		max-height: 186px;
+		overflow-y: auto;
+		scrollbar-color:  #757575 rgba(255, 255, 255, 0);
+		scrollbar-width: thin;
+
+		&::-webkit-scrollbar {
+			// height: 12px;
+			width: 3px;
+		}
+		&::-webkit-scrollbar-track {
+			background: rgba(255, 255, 255, 0);
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: #757575;
+			border-radius: 13px;
+			border: none;
+		}
+	}
+	&__selector-item {
+	}
+
+	&__selected-title {
+		&_selector {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 10px 12px 12px;
+			width: 100%;
+			max-width: 100%;
+			&:hover {
+				background: #e5e6ea;
+			}
+		}
+	}
+
+	&__link-img {
+		&:hover {
+			filter: brightness(0) saturate(100%) invert(16%) sepia(82%) saturate(2939%) hue-rotate(189deg)
+				brightness(96%) contrast(102%);
+		}
+	}
+
+	&__arrow-for-selector {
+		margin-left: 10px;
+		margin-right: 10px;
+		transition: transform 0.3s;
+		&.open {
+			transform: rotateZ(-180deg);
+		}
+	}
+
+	&__wrap-price {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		max-width: 335px;
+		width: 100%;
+	}
+
+	&__price-product {
+		display: flex;
+		flex-direction: column;
+		min-width: 70px;
+		align-items: flex-start;
+	}
+
+	&__price {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 20px;
+	}
+
+	&__price-comment {
+		color: #757575;
+		font-size: 14px;
+		line-height: 18px;
+	}
+
+	&__count-product {
+	}
+
+	&__wrap-count {
+		border-radius: 4px;
+		border: 1px solid #757575;
+		overflow: hidden;
+		background: #fff;
+		max-width: 114px;
+		display: flex;
+		align-items: center;
+		padding-right: 14px;
+		height: 35px;
+		margin-left: 16px;
+		margin-right: 24px;
+	}
+
+	&__count-input {
+		border: none;
+		width: 100%;
+		padding-left: 10px;
+		color: #757575;
+		font-size: 16px;
+		line-height: 22px;
+		-moz-appearance: textfield;
+		
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			/* display: none; <- Crashes Chrome on hover */
+			-webkit-appearance: none;
+			margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+		}
+	
+	}
+
+	&__count-comment {
+		color: #757575;
+		font-size: 14px;
+		line-height: 18px;
+	}
+
+	&__price-total {
+		display: flex;
+		flex-direction: column;
+		min-width: 73px;
+	}
+
+	&__description-bottom {
+		color: #757575;
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 17px;
+	}
+
+	&__button-add-cart {
+		font-size: 14px;
+		line-height: 18px;
+	}
+}

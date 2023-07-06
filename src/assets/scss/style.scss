@@ -54,8 +54,12 @@ body {
 	@import "blocks/progressbar";
 	@import "blocks/popup";
 
+	
+
 	@import "blocks/smart-search";
 	@import "blocks/start-search";
 	@import "blocks/search-list";
 	@import "blocks/search-file";
+	@import "blocks/mass-selection";
+	@import "blocks/result-search";
 }

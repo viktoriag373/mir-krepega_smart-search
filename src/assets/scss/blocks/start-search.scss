@@ -1,4 +1,10 @@
 .start-search {
+	display: none;//временно
+
+	&.active {
+		display: block;
+	}
+
 	&__select-text {
 		color: #757575;
 		font-size: 16px;

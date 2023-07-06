@@ -1,0 +1,126 @@
+.mass-selection {
+	border-radius: 6px;
+	border: 1px solid #e5e6ea;
+	display: flex;
+	margin: 0;
+	padding: 12px 15px 12px 16px;
+	font-size: 16px;
+
+	align-items: center;
+	justify-content: space-between;
+
+	&__choose-all {
+		margin-right: 20px;
+		transition: color 0.3s;
+		display: flex;
+		align-items: center;
+		@media (hover: hover) {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	&__choose-all-title {
+		font-size: 14px;
+		line-height: 18px;
+	}
+
+	&__delete-btn {
+		cursor: pointer;
+		transition: color 0.3s;
+		color: #d9534f;
+		font-size: 14px;
+		line-height: 18px;
+		transition: color 0.3s;
+	}
+
+	&__delete-btn:hover {
+	}
+}
+
+.select-all-checkbox {
+	position: relative;
+	cursor: pointer;
+	// padding-left: 23px;
+	// bottom: 22px;
+
+	&__icon {
+		display: block;
+		background: transparent;
+		border-radius: 4px;
+		box-sizing: border-box;
+		border: 1px solid #afafaf;
+		height: 16px;
+		// left: 0;
+		// position: absolute;
+		transition: all 0.25s cubic-bezier(0.4, 0, 0.23, 1);
+		// top: 8px;
+		width: 16px;
+		margin-right: 8px;
+		&:hover {
+			border: 1px solid $mainColor;
+		}
+	}
+
+	// &__icon:after {
+	// 	content: " ";
+	// 	top: -5px;
+	// 	position: absolute;
+	// }
+
+	// &__icon_big {
+	// 	top: 6px;
+	// 	width: 24px;
+	// 	height: 24px;
+	// }
+
+	&__icon_checked {
+		border: 1px solid $mainColor;
+		background-color: $mainColor;
+
+	}
+
+	// &__icon_checked &__icon_checked:after {
+	// 	-webkit-transform: rotate(45deg);
+	// 	-moz-transform: rotate(45deg);
+	// 	-ms-transform: rotate(45deg);
+	// 	-o-transform: rotate(45deg);
+	// 	animation: checkbox-check 125ms cubic-bezier(0.4, 0, 0.23, 1) 0.25s forwards;
+	// 	border-right: 2px solid transparent;
+	// 	border-bottom: 2px solid transparent;
+	// 	box-sizing: content-box;
+	// 	height: 7px;
+	// 	left: 2px;
+	// 	top: 5px;
+	// 	transform: rotate(45deg);
+	// 	transform-origin: 0 100%;
+	// 	width: 3px;
+	// }
+
+	// &__icon_checked_big:after {
+	// 	border-right: 3px solid transparent;
+	// 	border-bottom: 3px solid transparent;
+	// 	height: 12px;
+	// 	left: -2px;
+	// 	padding-right: 2px;
+	// 	padding-top: 6px;
+	// 	top: -1px;
+	// 	width: 7px;
+	// }
+
+	// &__icon_indeterminate {
+	// 	border: 1px solid #757575;
+	// 	background-color: transparent;
+	// }
+
+	// &__icon_indeterminate:after {
+	// 	left: 3px;
+	// 	top: 0;
+	// 	border-right: 0 solid transparent;
+	// 	// border-bottom: 2px solid #fff;
+	// 	border-radius: 0;
+	// 	box-sizing: content-box;
+	// 	height: 6px;
+	// 	width: 8px;
+	// }
+}
