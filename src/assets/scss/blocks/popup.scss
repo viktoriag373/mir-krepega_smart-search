@@ -18,7 +18,7 @@
 		display: flex;
 	}
 	@media (max-width: 481px) {
-		align-items: flex-start;
+		// align-items: flex-start;
 	}
 
 
@@ -33,9 +33,7 @@
 		padding: 24px;
 		cursor: default;
 		@media (max-width: 481px) {
-			border-radius: 0;
-			padding: 0 0 15px 0;
-			height: 100vh;
+			max-width: 95%;
 		}
 	}
 

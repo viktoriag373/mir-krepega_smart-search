@@ -12,7 +12,7 @@
 			transform: translateY(-10px);
 			font-size: 11px;
 			line-height: 127%;
-			@media (max-width: 481px) {
+			@media (max-width: 680px) {
 				transform: translateY(-10px);
 			}
 		}
@@ -36,11 +36,10 @@
 		padding-right: 24px;
 		padding-left: 24px;
 		transition: background 0.2s;
-		// @media (max-width: 481px) {
-		// 	min-height: 52px;
-		// 	margin-bottom: 13px;
-		// 	margin-top: 2px;
-		// }
+		@media (max-width: 680px) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
 
 		&.dragover {
 			background-color: #fafafa;
@@ -62,7 +61,7 @@
 			padding-top: 17px;
 			padding-bottom: 22px;
 			justify-content: flex-start;
-			@media (max-width: 481px) {
+			@media (max-width: 680px) {
 				padding-left: 11px;
 				padding-right: 25px;
 				margin-top: 0;
@@ -72,7 +71,7 @@
 				line-height: 22px;
 
 				color: #333333;
-				@media (max-width: 481px) {
+				@media (max-width: 680px) {
 					white-space: nowrap;
 				}
 			}
@@ -87,7 +86,7 @@
 				&_file {
 					display: block;
 					width: 24px;
-					@media (max-width: 481px) {
+					@media (max-width: 680px) {
 						width: 13px;
 						margin-right: 12px;
 					}
@@ -112,7 +111,7 @@
 	&__label-file {
 		overflow: hidden;
 		margin-top: 6px;
-		@media (max-width: 481px) {
+		@media (max-width: 680px) {
 			margin-top: 0;
 		}
 	}
@@ -120,6 +119,16 @@
 	&__wrap-label-file-text {
 		display: flex;
 		align-items: center;
+		@media (max-width: 680px) {
+			align-items: flex-start;
+			max-width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			
+		}
+		@media (max-width: 360px) {
+			max-width: 100%;
+		}
 	}
 
 	&__label-file-text {
@@ -131,10 +140,11 @@
 		align-items: center;
 		justify-content: center;
 
-		@media (max-width: 481px) {
+		@media (max-width: 680px) {
 			white-space: inherit;
-			font-size: 13px;
+			font-size: 14px;
 			line-height: 138%;
+			display: inline-block;
 		}
 
 
@@ -153,10 +163,12 @@
 		justify-content: center;
 		margin-top: 4px;
 
-		@media (max-width: 481px) {
+		@media (max-width: 680px) {
 			white-space: inherit;
 			font-size: 13px;
 			line-height: 138%;
+			text-align: center;
+			margin-top: 10px;
 		}
 
 	}
@@ -189,7 +201,7 @@
 		border-radius: 50%;
 		transition: all 0.3s;
 		display: none;
-		@media (max-width: 481px) {
+		@media (max-width: 680px) {
 			right: 8px;
 			width: 16px;
 			height: 16px;
@@ -212,7 +224,7 @@
 			transition: all 0.3s ease 0s;
 			background: $mainColor;
 			border-radius: 50px;
-			@media (max-width: 481px) {
+			@media (max-width: 680px) {
 				width: 50%;
 			}
 		}
@@ -229,9 +241,10 @@
 
 	&__input-icon {
 		margin-right: 8px;
-		@media (max-width: 481px) {
+		@media (max-width: 680px) {
 			margin-right: 8px;
 			width: 12px;
+			margin-top: 5px;
 		}
 
 		&_file {

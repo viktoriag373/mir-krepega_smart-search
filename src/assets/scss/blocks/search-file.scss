@@ -22,6 +22,11 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 23px;
+
+		@media (max-width: 780px) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 
 	&__sample-item {
@@ -30,12 +35,24 @@
 		&:last-child {
 			margin-right: 0;
 		}
+
+		@media (max-width: 780px) {
+			margin-right: 0;
+			margin-bottom: 15px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
 	}
 	&__sample-wrap-img {
 		margin-bottom: 4px;
+		@media (max-width: 780px) {
+			width: 100%;
+			max-width: 345px;
+		}
 	}
 	&__sample-img {
-		
+		width: 100%;
 	}
 
 	&__sample-text {

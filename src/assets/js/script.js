@@ -145,7 +145,8 @@ window.addEventListener('load', function () {
 	/*----------------------------------- */
 
 	let time = 2000;
-	$('.button-start-search').on('click', function () {
+	$('.button-start-search').on('click', function (e) {
+		e.preventDefault()
 		$(this).addClass('hidden')
 		startSearch()
 	})
@@ -167,12 +168,31 @@ window.addEventListener('load', function () {
 	}
 
 	function openPopupResult() {
+		openPopup()
 		$('.popup-search-finish').addClass('open')
 	}
 	function closePopupResult() {
+		closePopup()
 		$('.popup-search-finish').removeClass('open')
 	}
 
+
+	$('.popup__content').click(function(event) {
+		event.stopPropagation(); // Останавливаем передачу клика вверх, чтобы не закрылось окно
+	});
+	$('.popup__close, .popup').on('click', function () {
+		if ($('.popup').hasClass('open')) {
+			closePopupResult()
+			closeLoading()
+		}
+	});
+	
+	function openPopup() {
+		$('body').addClass('_lock');
+	}
+	function closePopup() {
+		$('body').removeClass('_lock');
+	}
 
 	$('.button-show-result').on('click', function () {
 		closePopupResult()
