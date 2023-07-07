@@ -2,133 +2,117 @@
 
 
 window.addEventListener('load', function () {
-	//меню бургер
-	const iconburger = document.querySelector('.burger');
-	const menuBody = document.querySelector('.menu');
-	if (iconburger) {
-		iconburger.addEventListener('click', function (e) {
-			document.body.classList.toggle('_lock');
-			iconburger.classList.toggle('_active');
-			menuBody.classList.toggle('_active');
-		});
+	/*----------------------------------- */
+	function changeDataStep() {
+		if ($('.start-search').hasClass('active')) {
+			$('.smart-search__button-back span').text('Вернуться к покупкам')
+			$('.smart-search__steps-text').text('1 из 2 шагов')
+		} else if ($('.result-search').hasClass('active')) {
+			$('.smart-search__button-back span').text('Вернуться на шаг назад')
+			$('.smart-search__steps-text').text('2 из 2 шагов')
+			$('.smart-search__button-back').addClass('step-two')
+		}
 	}
 
-});
+	changeDataStep()
+	/*----------------------------------- */
 
+	/*----------------------------------- */
 
-function resizeInit() {
-	// высота хедера при изменении ширины экрана
-	// назначения отступа в соответсвии с высотой хедера
-	let header = document.querySelector('.header')
-	let main = document.querySelector('.main')
-	let headerHeight = header.clientHeight;
-	main.style['padding-top'] = headerHeight + 'px';
+	$('.start-search__switch-item').on('click', function () {
+		if ($(this).hasClass('_selected')) {
+			return
+		} else {
+			$('.start-search__switch-item').removeClass('_selected')
+			$(this).addClass('_selected')
 
-	if ($(window).width() <= mediaQuerySize) {
-
-		$('.news__content').addClass('swiper');
-		$('.news__swiper-wrapper').addClass('swiper-wrapper');
-		$('.news__item').addClass('swiper-slide');
-		newsSwiperInit()
-	}
-	else {
-		$('.news__content').removeClass('swiper');
-		$('.news__swiper-wrapper').removeClass('swiper-wrapper');
-		$('.news__item').removeClass('swiper-slide');
-		newsSwiperDestroy()
-	}
-}
-jQuery(document).ready(function ($) {
-
-	// Инициализация кода который должен срабатывть и при изменении ширина экрана
-	resizeInit(); // Запуск при загрузке
-	$(window).resize(function () {
-		resizeInit(); // Запуск если изменили экран
-	});
-
-	$('.menu__item').hover(function () {
-		document.body.classList.toggle('lock');
-	});
-
-	// открытие подпунктов
-	$('.menu__link').click(function () {
-		$(this).siblings(".menu__submenu").toggleClass('_active');
+			changeCategory($(this))
+		}
 	})
 
 
-	// окрывать вопросы по одному
-	$('.faq__question-wrap').on('click', function (event) {
-		if ($('.faq__content').hasClass('open-one')) {
-			$('.faq__question-wrap').not($(this)).removeClass('active');
-			$('.faq__answer-wrap').not($(this).next()).slideUp(150);
+
+	function changeCategory(switchItem) {
+		$('.search-block').removeClass('open')
+		if (switchItem.hasClass('start-search__switch-item_list')) {
+			$('.search-list').addClass('open')
+		} else if (switchItem.hasClass('start-search__switch-item_file')) {
+			$('.search-file').addClass('open')
 		}
-		$(this).toggleClass('active').next().slideToggle(300);
+
+
+	}
+
+	/*----------------------------------- */
+
+	let dropZone = $('.attach-file__wrap-input-file');
+	$('.attach-file__input-file').focus(function () {
+		$('label').addClass('focus');
+	})
+		.focusout(function () {
+			$('label').removeClass('focus');
+		});
+	dropZone.on('drag dragstart dragend dragover dragenter dragleave drop', function () {
+		return false;
+	});
+	dropZone.on('dragover dragenter', function () {
+		dropZone.addClass('dragover');
+	});
+	dropZone.on('dragleave', function (e) {
+		let dx = e.pageX - dropZone.offset().left;
+		let dy = e.pageY - dropZone.offset().top;
+		if ((dx < 0) || (dx > dropZone.width()) || (dy < 0) || (dy > dropZone.height())) {
+			dropZone.removeClass('dragover');
+		}
+	});
+	dropZone.on('drop', function (e) {
+		dropZone.removeClass('dragover');
+		let files = e.originalEvent.dataTransfer.files;
+		addFiles(files);
+	});
+	$('.attach-file__input-file').change(function () {
+		let files = this.files;//список файлов
+		addFiles(files);
 	});
 
-
-	//позиция курсора на нужный символ при клике в любом месте внутри инпута
-	$.fn.setCursorPosition = function (pos) {
-		if ($(this).get(0).setSelectionRange) {
-			$(this).get(0).setSelectionRange(pos, pos);
-		} else if ($(this).get(0).createTextRange) {
-			var range = $(this).get(0).createTextRange();
-			range.collapse(true);
-			range.moveEnd('character', pos);
-			range.moveStart('character', pos);
-			range.select();
-		}
-	};
-
-	// маска на инпут
-	$("#subscribe-phone").on('click', function () {
-		$(this).setCursorPosition(3);
-	}).mask("+7(999) 999-9999");
-
-	//слайдер Promo
-	var promoSwiper = new Swiper(".promo__slider", {
-		centeredSlides: true,
-		slidesPerView: "auto",
-		spaceBetween: 20,
-		centerMode: true,
-		centerPadding: '40px',
-		loop: true,
-		grabCursor: true,
-		navigation: {
-			nextEl: '.promo__slider-button-next',
-			prevEl: '.promo__slider-button-prev',
-		},
-		breakpoints: {
-			320: {
-				spaceBetween: 5,
-				slidesPerView: 1,
-			},
-			768: {
-				spaceBetween: 20,
-				slidesPerView: "auto",
-			},
-		},
+	let labelTextDefault = $('.attach-file__label-file-text').html()
+	$('.attach-file__input-file-clear').on('click', function (e) {
+		clearFiles($(this))
+		return false
 	});
 
+	function clearFiles(e) {
+		e.closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(labelTextDefault);
+		$('.attach-file__wrap-input-file').removeClass('added');
+	}
+
+	function addFiles(files) {
+		$('.attach-file__input-file').closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(files[0].name);
+		$('.attach-file__wrap-input-file').addClass('added');
+		let fileSize = files[0].size; // Размер файла в байтах
+		// Функция для конвертации размера файла
+		function convertFileSize(size) {
+			let suffix = ''
+			if (size < 1024) {
+				suffix = " B";
+			} else if (size < 1048576) {
+				size /= 1024;
+				suffix = " KB";
+			} else if (size < 1073741824) {
+				size /= 1048576;
+				suffix = " MB";
+			} else {
+				size /= 1073741824;
+				suffix = " GB";
+			}
+			return size.toFixed(1) + suffix
+		}
+		let formattedSize = convertFileSize(fileSize);
+		$('.attach-file__file-size').html(formattedSize)
+	}
+
+
+	/*----------------------------------- */
 });
 
-var newsSwiper = null;
-var mediaQuerySize = 576;
-function newsSwiperInit() {
-	if (!newsSwiper) {
-		//слайдер news
-		var newsSwiper = new Swiper(".news__content", {
-			centeredSlides: false,
-			slidesPerView: 1.4,
-			spaceBetween: 20,
-			loop: true,
-			grabCursor: true,
-		});
-	}
-}
 
-function newsSwiperDestroy() {
-	if (newsSwiper) {
-		newsSwiper.destroy();
-		newsSwiper = null;
-	}
-}

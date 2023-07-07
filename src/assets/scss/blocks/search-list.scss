@@ -1,6 +1,9 @@
 .search-list {
 
-
+	display: none;
+	&.open {
+		display: block;
+	}
 	&__descriptions {
 		
 	}
