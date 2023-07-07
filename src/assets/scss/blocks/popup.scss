@@ -182,6 +182,22 @@
 		color: $mainColor;
 	}
 
+	&__wrap-not-result {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+
+	&__wrap-feedback {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+
 	&__form-feedback {
 		display: flex;
 		justify-content: space-between;

@@ -184,31 +184,55 @@ window.addEventListener('load', function () {
 		$('.smart-search__progressbar').removeClass('visible')
 	}
 
-	function openPopupResult() {
-		openPopup()
-		$('.popup-search-finish').addClass('open')
-	}
-	function closePopupResult() {
-		closePopup()
-		$('.popup-search-finish').removeClass('open')
-	}
-
-
 	$('.popup__content').click(function (event) {
 		event.stopPropagation(); // Останавливаем передачу клика вверх, чтобы не закрылось окно
 	});
 	$('.popup__close, .popup').on('click', function () {
+
 		if ($('.popup').hasClass('open')) {
-			closePopupResult()
+
+			closePopup()
 			closeLoading()
+			/**/
+			$('.popup__wrap-not-result').addClass('active')
+			$('.popup__wrap-feedback').removeClass('active')
+			/**/
 		}
 	});
+
+
 
 	function openPopup() {
 		$('body').addClass('_lock');
 	}
 	function closePopup() {
 		$('body').removeClass('_lock');
+		$('.popup').removeClass('open')
+	}
+
+	function openPopupResult() {
+		openPopup()
+		$('.popup-search-finish').addClass('open')//если есть результат
+		//$('.popup-not-result').addClass('open')// если результата нет
+	}
+
+	function closePopupResult() {
+		closePopup()
+		// $('.popup-search-finish').removeClass('open')
+	}
+
+	function openPopupDeleteSelected() {
+		openPopup()
+		$('.popup-delete-products').addClass('open')
+	}
+	// function closePopupDeleteSelected() {
+	// 	closePopup()
+	// 	$('.popup-delete-products').removeClass('open')
+	// }
+
+	function openPopupAddCart() {
+		openPopup()
+		$('.popup-add-cart').addClass('open')
 	}
 
 	$('.button-show-result').on('click', function () {
@@ -216,6 +240,19 @@ window.addEventListener('load', function () {
 		closeLoading()
 		closeStepOne()
 		openStepTwo()
+	})
+
+	$('.mass-selection__delete-btn').on('click', function () {
+		openPopupDeleteSelected()
+	})
+
+	$('.result-search__button-add-cart').on('click', function () {
+		openPopupAddCart()
+	})
+
+	$('.popup__wrap-not-result .button-order').on('click', function () {
+		$('.popup__wrap-not-result').removeClass('active')
+		$('.popup__wrap-feedback').addClass('active')
 	})
 
 	$('.smart-search__button-back').on('click', function () {
@@ -243,6 +280,7 @@ window.addEventListener('load', function () {
 	function openSelectorResult(e) {
 		$('.result-search__selector').addClass('hidden')
 		e.find('.result-search__selector').removeClass('hidden')
+		$('.result-search__arrow-for-selector').removeClass('open')
 		e.find('.result-search__arrow-for-selector').addClass('open')
 	}
 
@@ -264,7 +302,7 @@ window.addEventListener('load', function () {
 			$(this).removeClass('_checked')
 		}
 
-		
+
 	})
 
 	/*----------------------------------- */
