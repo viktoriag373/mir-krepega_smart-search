@@ -2,7 +2,34 @@
 
 
 window.addEventListener('load', function () {
+
 	/*----------------------------------- */
+	
+	openStepOne()
+	changeDataStep()
+
+
+	function openStepOne() {
+		$('.start-search').addClass('active')
+		changeDataStep()
+	}
+
+	function closeStepOne() {
+		$('.start-search').removeClass('active')
+	}
+
+	function openStepTwo() {
+		$('.result-search').addClass('active')
+		changeDataStep()
+	}
+
+	function closeStepTwo() {
+		$('.result-search').removeClass('active')
+	}
+
+	
+
+
 	function changeDataStep() {
 		if ($('.start-search').hasClass('active')) {
 			$('.smart-search__button-back span').text('Вернуться к покупкам')
@@ -14,7 +41,7 @@ window.addEventListener('load', function () {
 		}
 	}
 
-	changeDataStep()
+	
 	/*----------------------------------- */
 
 	/*----------------------------------- */
@@ -110,6 +137,58 @@ window.addEventListener('load', function () {
 		let formattedSize = convertFileSize(fileSize);
 		$('.attach-file__file-size').html(formattedSize)
 	}
+
+
+	/*----------------------------------- */
+
+
+	/*----------------------------------- */
+
+	let time = 5000;
+	$('.button-start-search').on('click', function () {
+		$(this).addClass('hidden')
+		startSearch()
+	})
+	function startSearch() {
+		$('.skeleton').addClass('loading')
+		$('.smart-search__progressbar').addClass('visible')
+		$('.progressbar__line-value').animate({ width: '100%' }, time)
+		setTimeout(finishSearch, time);
+
+	}
+	function finishSearch() {
+		openPopupResult()
+	}
+
+	function closeLoading() {
+		$('.skeleton').removeClass('loading')
+		$('.button-start-search').removeClass('hidden')
+		$('.smart-search__progressbar').removeClass('visible')
+	}
+
+	function openPopupResult() {
+		$('.popup-search-finish').addClass('open')
+	}
+	function closePopupResult() {
+		$('.popup-search-finish').removeClass('open')
+	}
+
+
+	$('.button-show-result').on('click', function () {
+		closePopupResult()
+		closeLoading()
+		closeStepOne()
+		openStepTwo()
+	})
+
+	$('.smart-search__button-back').on('click', function () {
+		if ($(this).hasClass('step-two')) {
+			closeStepTwo()
+			openStepOne()
+		} else {
+			return
+		}
+	})
 
 
 	/*----------------------------------- */
