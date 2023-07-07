@@ -25,9 +25,21 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		@media (max-width: 1085px) {
+			flex-wrap: wrap;
+		}
+
+		@media (max-width: 769px) {
+			flex-wrap: nowrap;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 20px 10px;
+		}
 	}
 
 	&__wrap-title {
+		margin-right: 15px;
 	}
 
 	&__wrap-select {
@@ -64,6 +76,7 @@
 		font-size: 14px;
 		line-height: 18px;
 		max-width: 258px;
+		width: 100%;
 	}
 
 	&__wrap-choose-relevant {
@@ -74,6 +87,17 @@
 		width: 100%;
 		margin-left: auto;
 		position: relative;
+
+		@media (max-width: 1085px) {
+			order: 3;
+			margin-left: 0;
+			margin-top: 10px;
+		}
+		@media (max-width: 769px) {
+			order: 2;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
 	}
 
 	&__indicator {
@@ -81,6 +105,10 @@
 		width: 12px;
 		height: 12px;
 		margin-top: 3px;
+		@media (max-width: 769px) {
+			width: 16px;
+			height: 16px;
+		}
 	}
 
 	&__wrap-selected {
@@ -95,6 +123,9 @@
 		line-height: 18px;
 		margin-right: auto;
 		max-width: 297px;
+		@media (max-width: 1085px) {
+			margin-right: 5px;
+		}
 	}
 
 	&__selector {
@@ -173,6 +204,14 @@
 		justify-content: flex-end;
 		max-width: 335px;
 		width: 100%;
+
+		@media (max-width: 1085px) {
+			order: 2;
+		}
+		@media (max-width: 769px) {
+			order: 3;
+			justify-content: space-between;
+		}
 	}
 
 	&__price-product {
@@ -186,12 +225,20 @@
 		font-size: 16px;
 		font-weight: 600;
 		line-height: 20px;
+		@media (max-width: 769px) {
+			font-size: 14px;
+			line-height: 120%;
+		}
 	}
 
 	&__price-comment {
 		color: #757575;
 		font-size: 14px;
 		line-height: 18px;
+		@media (max-width: 769px) {
+			font-size: 13px;
+			line-height: 120%;
+		}
 	}
 
 	&__count-product {
@@ -209,6 +256,11 @@
 		height: 35px;
 		margin-left: 16px;
 		margin-right: 24px;
+
+		@media (max-width: 480px) {
+			margin-left: 0;
+			margin-right: 0;
+		}
 	}
 
 	&__count-input {
@@ -240,6 +292,16 @@
 		display: flex;
 		flex-direction: column;
 		min-width: 73px;
+
+		@media (max-width: 480px) {
+			min-width: 70px;
+			.result-search__price {
+				text-align: right;
+			}
+			.result-search__price-comment {
+				text-align: right;
+			}
+		}
 	}
 
 	&__description-bottom {
