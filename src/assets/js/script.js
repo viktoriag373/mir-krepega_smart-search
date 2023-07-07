@@ -4,7 +4,7 @@
 window.addEventListener('load', function () {
 
 	/*----------------------------------- */
-	
+
 	openStepOne()
 	changeDataStep()
 
@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
 		$('.result-search').removeClass('active')
 	}
 
-	
+
 
 
 	function changeDataStep() {
@@ -41,7 +41,7 @@ window.addEventListener('load', function () {
 		}
 	}
 
-	
+
 	/*----------------------------------- */
 
 	/*----------------------------------- */
@@ -144,7 +144,7 @@ window.addEventListener('load', function () {
 
 	/*----------------------------------- */
 
-	let time = 5000;
+	let time = 2000;
 	$('.button-start-search').on('click', function () {
 		$(this).addClass('hidden')
 		startSearch()
@@ -190,6 +190,29 @@ window.addEventListener('load', function () {
 		}
 	})
 
+	/*----------------------------------- */
+
+	/*----------------------------------- */
+
+	$('.result-search__wrap-selected').on('click', function () {
+
+		if (!$(this).find('.result-search__selector').hasClass('hidden')) {
+			closeSelectorResult($(this))
+		} else {
+			openSelectorResult($(this))
+		}
+	})
+
+	function openSelectorResult(e) {
+		$('.result-search__selector').addClass('hidden')
+		e.find('.result-search__selector').removeClass('hidden')
+		e.find('.result-search__arrow-for-selector').addClass('open')
+	}
+
+	function closeSelectorResult(e) {
+		e.find('.result-search__selector').addClass('hidden')
+		e.find('.result-search__arrow-for-selector').removeClass('open')
+	}
 
 	/*----------------------------------- */
 });
