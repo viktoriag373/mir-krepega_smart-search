@@ -108,14 +108,31 @@ window.addEventListener('load', function () {
 		return false
 	});
 
+	function showLoadingCircle() {
+		$('.attach-file__circular-loading').addClass('loading');
+		setTimeout(() => {
+			hiddenLoadingCircle()
+			$('.attach-file__input-file-clear').addClass('visible')
+		}, 3000);
+	}
+	function hiddenLoadingCircle() {
+		$('.attach-file__circular-loading').removeClass('loading');
+
+	}
+
 	function clearFiles(e) {
 		e.closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(labelTextDefault);
 		$('.attach-file__wrap-input-file').removeClass('added');
+		$('.attach-file__input-file-clear').removeClass('visible')
 	}
 
 	function addFiles(files) {
+		showLoadingCircle()
+
+
 		$('.attach-file__input-file').closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(files[0].name);
 		$('.attach-file__wrap-input-file').addClass('added');
+
 		let fileSize = files[0].size; // Размер файла в байтах
 		// Функция для конвертации размера файла
 		function convertFileSize(size) {
@@ -177,7 +194,7 @@ window.addEventListener('load', function () {
 	}
 
 
-	$('.popup__content').click(function(event) {
+	$('.popup__content').click(function (event) {
 		event.stopPropagation(); // Останавливаем передачу клика вверх, чтобы не закрылось окно
 	});
 	$('.popup__close, .popup').on('click', function () {
@@ -186,7 +203,7 @@ window.addEventListener('load', function () {
 			closeLoading()
 		}
 	});
-	
+
 	function openPopup() {
 		$('body').addClass('_lock');
 	}
@@ -233,6 +250,22 @@ window.addEventListener('load', function () {
 		e.find('.result-search__selector').addClass('hidden')
 		e.find('.result-search__arrow-for-selector').removeClass('open')
 	}
+
+	/*----------------------------------- */
+
+	/*----------------------------------- */
+
+	$('.result-search__checkbox').on('click', function () {
+
+		if (!$(this).hasClass('_checked')) {
+			$(this).addClass('_checked')
+
+		} else {
+			$(this).removeClass('_checked')
+		}
+
+		
+	})
 
 	/*----------------------------------- */
 });

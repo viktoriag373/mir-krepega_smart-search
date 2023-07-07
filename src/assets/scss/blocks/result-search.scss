@@ -1,5 +1,5 @@
 .result-search {
-	display: none;//временно
+	display: none; //временно
 
 	&.active {
 		display: block;
@@ -50,9 +50,19 @@
 	&__checkbox {
 		position: relative;
 		cursor: pointer;
+		&._checked {
+			.result-search__checkbox-icon {
+				border: 1px solid $mainColor;
+				background-color: $mainColor;
+				background-image: url(../images/icon/tick.svg);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 80%;
+			}
+		}
 	}
 
-	&__icon {
+	&__checkbox-icon {
 		display: block;
 		background: transparent;
 		border-radius: 4px;
@@ -61,15 +71,11 @@
 		height: 16px;
 		transition: all 0.25s cubic-bezier(0.4, 0, 0.23, 1);
 		width: 16px;
-		margin-right: 8px;
+
 		&:hover {
 			border: 1px solid $mainColor;
 		}
-
-		&_checked {
-			border: 1px solid $mainColor;
-			background-color: $mainColor;
-		}
+	
 	}
 
 	&__title-request {
@@ -77,6 +83,7 @@
 		line-height: 18px;
 		max-width: 258px;
 		width: 100%;
+		margin-left: 8px;
 	}
 
 	&__wrap-choose-relevant {
@@ -149,7 +156,7 @@
 		margin-right: 4px;
 		max-height: 186px;
 		overflow-y: auto;
-		scrollbar-color:  #757575 rgba(255, 255, 255, 0);
+		scrollbar-color: #757575 rgba(255, 255, 255, 0);
 		scrollbar-width: thin;
 
 		&::-webkit-scrollbar {
@@ -271,7 +278,6 @@
 		font-size: 16px;
 		line-height: 22px;
 		-moz-appearance: textfield;
-		
 
 		&::-webkit-outer-spin-button,
 		&::-webkit-inner-spin-button {
@@ -279,7 +285,6 @@
 			-webkit-appearance: none;
 			margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 		}
-	
 	}
 
 	&__count-comment {

@@ -27,6 +27,7 @@
 	&__choose-all-title {
 		font-size: 14px;
 		line-height: 18px;
+		margin-left: 8px;
 	}
 
 	&__delete-btn {
@@ -47,6 +48,16 @@
 	cursor: pointer;
 	// padding-left: 23px;
 	// bottom: 22px;
+	&._checked {
+		.result-search__checkbox-icon {
+			border: 1px solid $mainColor;
+			background-color: $mainColor;
+			background-image: url(../images/icon/tick.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 80%;
+		}
+	}
 
 	&__icon {
 		display: block;
@@ -60,7 +71,7 @@
 		transition: all 0.25s cubic-bezier(0.4, 0, 0.23, 1);
 		// top: 8px;
 		width: 16px;
-		margin-right: 8px;
+	
 		&:hover {
 			border: 1px solid $mainColor;
 		}

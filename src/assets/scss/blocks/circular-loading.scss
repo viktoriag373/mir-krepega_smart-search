@@ -1,0 +1,40 @@
+.circular-loading {
+	display: flex;
+	flex-flow: row nowrap;
+	&__wrap {
+		width: 33px;
+		justify-content: space-around;
+	}
+
+	&__bg {
+		fill: none;
+		stroke: #E5E6EA;
+		stroke-width: 3.8;
+	}
+
+	&__chart {
+		display: block;
+		// margin: 10px auto;
+		// max-width: 80%;
+		// max-height: 250px;
+
+		&.blue {
+			.circular-loading__circle {
+				stroke: $mainColor;
+			}
+		}
+	}
+
+	&__circle {
+		fill: none;
+		stroke-width: 2.8;
+		stroke-linecap: round;
+		animation: progress 3s ease-out forwards;
+	}
+}
+
+@keyframes progress {
+	0% {
+		stroke-dasharray: 0 100;
+	}
+}

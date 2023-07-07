@@ -1,18 +1,40 @@
 .search-list {
-
 	display: none;
 	&.open {
 		display: block;
 	}
 	&__descriptions {
-		
+		position: relative;
+		max-width: max-content;
+	}
+
+	&__wrap-description-item {
+		display: flex;
+		align-items: center;
 	}
 
 	&__description-item {
-		
+		&:first-child {
+			margin-bottom: 0;
+		}
+	}
+	&__hint {
+		position: absolute;
+		z-index: 10;
+		right: -23px;
+		display: none;
 	}
 
 	&__description-img-info {
+		margin-top: -7px;
+		margin-left: 5px;
+
+		&:hover {
+			cursor: pointer;
+			~.search-list__hint {
+				display: block;
+			}
+		}
 	}
 
 	&__form-request {
@@ -44,6 +66,5 @@
 	}
 
 	&__button-icon {
-
 	}
 }

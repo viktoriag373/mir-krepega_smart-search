@@ -1,0 +1,23 @@
+.hint {
+	width: 100%;
+	max-width: 246px;
+	min-height: 124px;
+	background: url(../images/bg/hint-bg.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	padding: 18px 12px 14px;
+
+
+	&__title {
+		font-size: 14px;
+		line-height: 16px;
+		font-weight: 600;
+		margin-bottom: 4px;
+	}
+
+	&__description {
+		font-size: 14px;
+		line-height: 18px;
+
+	}
+}
