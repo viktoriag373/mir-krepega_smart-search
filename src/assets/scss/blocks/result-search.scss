@@ -133,6 +133,10 @@
 		@media (max-width: 1085px) {
 			margin-right: 5px;
 		}
+
+		&:active {
+			color: $mainColor;
+		}
 	}
 
 	&__selector {

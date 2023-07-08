@@ -124,9 +124,20 @@ window.addEventListener('load', function () {
 		e.closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(labelTextDefault);
 		$('.attach-file__wrap-input-file').removeClass('added');
 		$('.attach-file__input-file-clear').removeClass('visible')
+
+		lockButton($('.search-file__button.button-start-search'))
 	}
 
 	function addFiles(files) {
+
+		unlockButton($('.search-file__button.button-start-search'))
+		$('.search-file__button.button-start-search').on('click', function (e) {
+			e.preventDefault()
+			$(this).addClass('hidden')
+			startSearch()
+
+		});
+
 		showLoadingCircle()
 
 
@@ -162,10 +173,22 @@ window.addEventListener('load', function () {
 	/*----------------------------------- */
 
 	let time = 2000;
-	$('.button-start-search').on('click', function (e) {
-		e.preventDefault()
-		$(this).addClass('hidden')
-		startSearch()
+
+
+
+	$('.search-list__textarea').bind('input propertychange', function () {
+
+		if (!$('.search-list__textarea').val() == ' ') {
+			unlockButton($(this).siblings('.button-start-search'))
+			$(this).siblings('.button-start-search').on('click', function (e) {
+				e.preventDefault()
+				$(this).addClass('hidden')
+				startSearch()
+
+			});
+		} else {
+			lockButton($(this).siblings('.button-start-search'))
+		}
 	})
 	function startSearch() {
 		$('.skeleton').addClass('loading')
@@ -200,7 +223,17 @@ window.addEventListener('load', function () {
 		}
 	});
 
+	function lockButton(e) {
+		if (!e.hasClass('disabled')) {
+			e.addClass('disabled')
+		}
 
+	}
+	function unlockButton(e) {
+		if (e.hasClass('disabled')) {
+			e.removeClass('disabled')
+		}
+	}
 
 	function openPopup() {
 		$('body').addClass('_lock');
@@ -212,8 +245,8 @@ window.addEventListener('load', function () {
 
 	function openPopupResult() {
 		openPopup()
-		$('.popup-search-finish').addClass('open')//если есть результат
-		//$('.popup-not-result').addClass('open')// если результата нет
+		//$('.popup-search-finish').addClass('open')//если есть результат
+		$('.popup-not-result').addClass('open')// если результата нет
 	}
 
 	function closePopupResult() {
@@ -248,6 +281,18 @@ window.addEventListener('load', function () {
 
 	$('.result-search__button-add-cart').on('click', function () {
 		openPopupAddCart()
+	})
+	$('.popup__form-button').on('click', function () {
+		openPopupAddCart()
+	})
+
+	$('.popup__form-checkbox').change(function () {
+		if ($(this).is(':checked')) {
+			console.log('hhhhhh');
+			unlockButton($('.popup__button.popup__form-button'))
+		} else {
+			lockButton($('.popup__button.popup__form-button'))
+		}
 	})
 
 	$('.popup__wrap-not-result .button-order').on('click', function () {

@@ -14,7 +14,7 @@
 			height: 100%;
 			background: #e5e6ea;
 			border-radius: 6px;
-			z-index: 1;
+			z-index: 100;
 		}
 
 		&::before {
@@ -27,7 +27,7 @@
 			transform: translateX(-100%);
 			// background-image: linear-gradient(87deg, #E5E6EA 0%, rgba(229, 230, 234, 0.00) 15.63%, #E5E6EA 97.92%);
 			background-image: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.5), transparent);
-			z-index: 2;
+			z-index: 101;
 
 			animation: skeleton 2s infinite;
 		}

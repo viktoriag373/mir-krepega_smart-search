@@ -11,6 +11,12 @@
 	border: none;
 	font-family: inherit;
 
+	&.disabled {
+		opacity: 0.4000000059604645;
+		pointer-events: none;
+		cursor: default;
+	}
+
 	&__icon {
 		margin-left: 12px;
 	}

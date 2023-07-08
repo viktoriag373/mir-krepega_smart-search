@@ -345,16 +345,16 @@
 	}
 
 	&__form-button {
-		text-decoration: none;
-		opacity: 0.4;
-		pointer-events: none;
-		border: none;
+		// text-decoration: none;
+		// opacity: 0.4;
+		// pointer-events: none;
+		// border: none;
 
-		&.active {
-			opacity: 1;
-			cursor: pointer;
-			pointer-events: all;
-		}
+		// &.active {
+		// 	opacity: 1;
+		// 	cursor: pointer;
+		// 	pointer-events: all;
+		// }
 	}
 }
 
