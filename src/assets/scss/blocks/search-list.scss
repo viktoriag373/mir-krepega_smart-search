@@ -11,12 +11,20 @@
 	&__wrap-description-item {
 		display: flex;
 		align-items: center;
+		margin-bottom: 4px;
+		.smart-search__description-item {
+			margin-bottom: 0;
+		}
 	}
 
 	&__description-item {
 		&:first-child {
-			margin-bottom: 0;
+			// margin-bottom: 0;
 		}
+	}
+
+	&__wrap-hint {
+		display: flex;
 	}
 	&__hint {
 		position: absolute;
@@ -26,7 +34,7 @@
 	}
 
 	&__description-img-info {
-		margin-top: -7px;
+		// margin-top: -7px;
 		margin-left: 5px;
 
 		&:hover {

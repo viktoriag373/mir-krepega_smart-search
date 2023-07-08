@@ -137,6 +137,18 @@
 		&:active {
 			color: $mainColor;
 		}
+
+		&_selector {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 4px 12px 12px;
+			width: 100%;
+			max-width: 100%;
+			&:hover {
+				background: #e5e6ea;
+			}
+		}
 	}
 
 	&__selector {
@@ -179,20 +191,7 @@
 	&__selector-item {
 	}
 
-	&__selected-title {
-		&_selector {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 12px 10px 12px 12px;
-			width: 100%;
-			max-width: 100%;
-			&:hover {
-				background: #e5e6ea;
-			}
-		}
-	}
-
+	
 	&__link-img {
 		&:hover {
 			filter: brightness(0) saturate(100%) invert(16%) sepia(82%) saturate(2939%) hue-rotate(189deg)

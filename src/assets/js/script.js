@@ -245,8 +245,8 @@ window.addEventListener('load', function () {
 
 	function openPopupResult() {
 		openPopup()
-		//$('.popup-search-finish').addClass('open')//если есть результат
-		$('.popup-not-result').addClass('open')// если результата нет
+		$('.popup-search-finish').addClass('open')//если есть результат
+		//$('.popup-not-result').addClass('open')// если результата нет
 	}
 
 	function closePopupResult() {
@@ -273,6 +273,17 @@ window.addEventListener('load', function () {
 		closeLoading()
 		closeStepOne()
 		openStepTwo()
+	})
+
+	$('.button-delete').on('click', function () {
+		closePopup()
+		closeStepTwo()
+		openStepOne()
+	})
+
+	$('.button-cancel').on('click', function () {
+		closePopup()
+
 	})
 
 	$('.mass-selection__delete-btn').on('click', function () {
