@@ -2,9 +2,9 @@
 	position: relative;
 	width: 100%;
 	max-width: max-content;
-	overflow: hidden;
 
 	&.loading {
+		overflow: hidden;
 		&::after {
 			content: " ";
 			position: absolute;
