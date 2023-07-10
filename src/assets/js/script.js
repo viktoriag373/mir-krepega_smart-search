@@ -1,7 +1,126 @@
 'use strict';
 
 
+class SearchButton {
+    #element = $('.button-start-search')
+
+    get visible() {
+        return !this.#element.hasClass('hidden')
+    }
+
+    set visible(visible) {
+        if (visible) {
+            this.#element.removeClass('hidden')
+        } else {
+            this.#element.addClass('hidden')
+        }
+    }
+
+    onClick(callback) {
+        this.#element.on('click', callback)
+    }
+}
+
+class Progress {
+    static #ANIMATE_TIME = 1000
+    #element = $('.smart-search__progressbar')
+    #elementLine = $('.progressbar__line-value')
+    #text = $('.progressbar__value-finsh')
+
+    constructor() {
+        this.progress = 0
+    }
+
+    get visible() {
+        return this.#element.hasClass('visible')
+    }
+
+    set visible(visible) {
+        if (visible) {
+            this.#element.addClass('visible')
+        } else {
+            this.#element.removeClass('visible')
+        }
+    }
+
+    get progress() {
+        return this.#element.width()
+    }
+
+    set progress(progress) {
+        if (progress > 100) {
+            progress = 100
+        } else if (progress < 0) {
+            progress = 0
+        }
+
+        this.#text.text(`${progress}%`)
+        this.#elementLine.css('width', `${progress}%`)
+        // this.#elementLine.animate({ width: `${progress}%` }, Progress.#ANIMATE_TIME)
+    }
+}
+
+class CountdownTimer {
+    constructor(total, step, delay, onTick, onDone) {
+        let countdownTimer = setInterval(function(){
+            total -= step;
+            if (total <= 0) {
+                total = 0
+            }
+            if (onTick) {
+                onTick(total)
+            }
+
+            if (total <= 0) {
+                clearInterval(countdownTimer)
+                if (onDone) {
+                    onDone()
+                }
+            }
+        }, delay);
+    }
+}
+
+
+
 window.addEventListener('load', function () {
+    let searchButton = new SearchButton();
+    let progress = new Progress();
+
+
+    function startSearch() {
+        $('.skeleton').addClass('loading')
+        progress.progress = 0
+        searchButton.visible = false
+        progress.visible = true
+    }
+
+    function finishSearch() {
+        $('.skeleton').removeClass('loading')
+        searchButton.visible = true
+        progress.visible = false
+    }
+
+    function dummyLoading() {
+        new CountdownTimer(
+            100,
+            20,
+            1000,
+            (timeLeft)=> {
+                progress.progress = 100 - timeLeft
+            },
+            ()=> {
+                finishSearch()
+            }
+        )
+    }
+
+    searchButton.onClick(function () {
+        startSearch();
+        dummyLoading()
+    })
+
+
 
 	/*----------------------------------- */
 
@@ -26,9 +145,6 @@ window.addEventListener('load', function () {
 	function closeStepTwo() {
 		$('.result-search').removeClass('active')
 	}
-
-
-
 
 	function changeDataStep() {
 		if ($('.start-search').hasClass('active')) {
@@ -57,8 +173,6 @@ window.addEventListener('load', function () {
 		}
 	})
 
-
-
 	function changeCategory(switchItem) {
 		$('.search-block').removeClass('open')
 		if (switchItem.hasClass('start-search__switch-item_list')) {
@@ -66,12 +180,9 @@ window.addEventListener('load', function () {
 		} else if (switchItem.hasClass('start-search__switch-item_file')) {
 			$('.search-file').addClass('open')
 		}
-
-
 	}
 
 	/*----------------------------------- */
-
 	let dropZone = $('.attach-file__wrap-input-file');
 	$('.attach-file__input-file').focus(function () {
 		$('label').addClass('focus');
@@ -109,18 +220,31 @@ window.addEventListener('load', function () {
 	});
 
 	function showLoadingCircle() {
+        $('.circular-loading__circle')[0].setAttribute('stroke-dasharray', "0, 100");
 		$('.attach-file__circular-loading').addClass('loading');
-		setTimeout(() => {
-			hiddenLoadingCircle()
-			$('.attach-file__input-file-clear').addClass('visible')
-		}, 3000);
-	}
-	function hiddenLoadingCircle() {
-		$('.attach-file__circular-loading').removeClass('loading');
 
+        new CountdownTimer(
+            100,
+            1,
+            50,
+            (timeLeft)=> {
+                let percent = 100 - timeLeft
+                $('.circular-loading__circle')[0].setAttribute('stroke-dasharray', `${percent}, 100`);
+                $('.attach-file__wrap-file-size .attach-file__loading-value').text(`${percent}%`)
+            },
+            ()=> {
+                hideLoadingCircle()
+			    $('.attach-file__input-file-clear').addClass('visible')
+            }
+        )
+	}
+
+	function hideLoadingCircle() {
+		$('.attach-file__circular-loading').removeClass('loading');
 	}
 
 	function clearFiles(e) {
+        $('.attach-file__input-file').val('')
 		e.closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(labelTextDefault);
 		$('.attach-file__wrap-input-file').removeClass('added');
 		$('.attach-file__input-file-clear').removeClass('visible')
@@ -172,10 +296,6 @@ window.addEventListener('load', function () {
 
 	/*----------------------------------- */
 
-	let time = 2000;
-
-
-
 	$('.search-list__textarea').bind('input propertychange', function () {
 
 		if (!$('.search-list__textarea').val() == ' ') {
@@ -190,13 +310,7 @@ window.addEventListener('load', function () {
 			lockButton($(this).siblings('.button-start-search'))
 		}
 	})
-	function startSearch() {
-		$('.skeleton').addClass('loading')
-		$('.smart-search__progressbar').addClass('visible')
-		$('.progressbar__line-value').animate({ width: '100%' }, time)
-		setTimeout(finishSearch, time);
 
-	}
 	function finishSearch() {
 		openPopupResult()
 	}
@@ -283,7 +397,6 @@ window.addEventListener('load', function () {
 
 	$('.button-cancel').on('click', function () {
 		closePopup()
-
 	})
 
 	$('.mass-selection__delete-btn').on('click', function () {
@@ -315,8 +428,6 @@ window.addEventListener('load', function () {
 		if ($(this).hasClass('step-two')) {
 			closeStepTwo()
 			openStepOne()
-		} else {
-			return
 		}
 	})
 
@@ -325,7 +436,6 @@ window.addEventListener('load', function () {
 	/*----------------------------------- */
 
 	$('.result-search__wrap-selected').on('click', function () {
-
 		if (!$(this).find('.result-search__selector').hasClass('hidden')) {
 			closeSelectorResult($(this))
 		} else {
@@ -350,15 +460,11 @@ window.addEventListener('load', function () {
 	/*----------------------------------- */
 
 	$('.result-search__checkbox').on('click', function () {
-
 		if (!$(this).hasClass('_checked')) {
 			$(this).addClass('_checked')
-
 		} else {
 			$(this).removeClass('_checked')
 		}
-
-
 	})
 
 	/*----------------------------------- */
