@@ -459,14 +459,20 @@ window.addEventListener('load', function () {
 
 	$(document).on('click', function (e) { // событие клика по веб-документу
 		if ($('.result-search__selector:not(.hidden)')) {
-			let div = $('.result-search__selector:not(.hidden)'); // тут указываем элемент
-			if (!div.is(e.target) // если клик был не по нашему блоку
-				&& div.has(e.target).length === 0) { // и не по его дочерним элементам
-					closeSelectorResult(div.parents('.result-search__wrap-selected'))// скрываем его
+			let selektor = $('.result-search__selector:not(.hidden)'); // тут указываем элемент
+			if (!selektor.is(e.target) // если клик был не по нашему блоку
+				&& selektor.has(e.target).length === 0) { // и не по его дочерним элементам
+					closeSelectorResult(selektor.parents('.result-search__wrap-selected'))// скрываем его
 			}
 		}
 
 	});
+
+
+	$('.result-search__selected-title_selector').on('click', function (e) {
+		$(this).parents('.result-search__wrap-selected').find('.result-search__selected-title').html($(this).find('span').html())
+	})
+
 
 	/*----------------------------------- */
 
