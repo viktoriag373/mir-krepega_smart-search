@@ -26,6 +26,17 @@
 		align-items: center;
 		justify-content: space-between;
 
+		&.not-result {
+			.result-search__checkbox {
+				pointer-events: none;
+				cursor: default;
+				opacity: 0.3;
+			}
+			.result-search__arrow-for-selector {
+				display: none;
+			}
+		}
+
 		@media (max-width: 1085px) {
 			flex-wrap: wrap;
 		}
@@ -75,8 +86,8 @@
 		&:hover {
 			border: 1px solid $mainColor;
 		}
-	
 	}
+
 
 	&__title-request {
 		font-size: 14px;
@@ -191,7 +202,6 @@
 	&__selector-item {
 	}
 
-	
 	&__link-img {
 		&:hover {
 			filter: brightness(0) saturate(100%) invert(16%) sepia(82%) saturate(2939%) hue-rotate(189deg)

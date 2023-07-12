@@ -2,123 +2,123 @@
 
 
 class SearchButton {
-    #element = $('.button-start-search')
+	#element = $('.button-start-search')
 
-    get visible() {
-        return !this.#element.hasClass('hidden')
-    }
+	get visible() {
+		return !this.#element.hasClass('hidden')
+	}
 
-    set visible(visible) {
-        if (visible) {
-            this.#element.removeClass('hidden')
-        } else {
-            this.#element.addClass('hidden')
-        }
-    }
+	set visible(visible) {
+		if (visible) {
+			this.#element.removeClass('hidden')
+		} else {
+			this.#element.addClass('hidden')
+		}
+	}
 
-    onClick(callback) {
-        this.#element.on('click', callback)
-    }
+	onClick(callback) {
+		this.#element.on('click', callback)
+	}
 }
 
 class Progress {
-    static #ANIMATE_TIME = 1000
-    #element = $('.smart-search__progressbar')
-    #elementLine = $('.progressbar__line-value')
-    #text = $('.progressbar__value-finsh')
+	static #ANIMATE_TIME = 1000
+	#element = $('.smart-search__progressbar')
+	#elementLine = $('.progressbar__line-value')
+	#text = $('.progressbar__value-finsh')
 
-    constructor() {
-        this.progress = 0
-    }
+	constructor() {
+		this.progress = 0
+	}
 
-    get visible() {
-        return this.#element.hasClass('visible')
-    }
+	get visible() {
+		return this.#element.hasClass('visible')
+	}
 
-    set visible(visible) {
-        if (visible) {
-            this.#element.addClass('visible')
-        } else {
-            this.#element.removeClass('visible')
-        }
-    }
+	set visible(visible) {
+		if (visible) {
+			this.#element.addClass('visible')
+		} else {
+			this.#element.removeClass('visible')
+		}
+	}
 
-    get progress() {
-        return this.#element.width()
-    }
+	get progress() {
+		return this.#element.width()
+	}
 
-    set progress(progress) {
-        if (progress > 100) {
-            progress = 100
-        } else if (progress < 0) {
-            progress = 0
-        }
+	set progress(progress) {
+		if (progress > 100) {
+			progress = 100
+		} else if (progress < 0) {
+			progress = 0
+		}
 
-        this.#text.text(`${progress}%`)
-        this.#elementLine.css('width', `${progress}%`)
-        // this.#elementLine.animate({ width: `${progress}%` }, Progress.#ANIMATE_TIME)
-    }
+		this.#text.text(`${progress}%`)
+		this.#elementLine.css('width', `${progress}%`)
+		// this.#elementLine.animate({ width: `${progress}%` }, Progress.#ANIMATE_TIME)
+	}
 }
 
 class CountdownTimer {
-    constructor(total, step, delay, onTick, onDone) {
-        let countdownTimer = setInterval(function(){
-            total -= step;
-            if (total <= 0) {
-                total = 0
-            }
-            if (onTick) {
-                onTick(total)
-            }
+	constructor(total, step, delay, onTick, onDone) {
+		let countdownTimer = setInterval(function () {
+			total -= step;
+			if (total <= 0) {
+				total = 0
+			}
+			if (onTick) {
+				onTick(total)
+			}
 
-            if (total <= 0) {
-                clearInterval(countdownTimer)
-                if (onDone) {
-                    onDone()
-                }
-            }
-        }, delay);
-    }
+			if (total <= 0) {
+				clearInterval(countdownTimer)
+				if (onDone) {
+					onDone()
+				}
+			}
+		}, delay);
+	}
 }
 
 
 
 window.addEventListener('load', function () {
-    let searchButton = new SearchButton();
-    let progress = new Progress();
+	let searchButton = new SearchButton();
+	let progress = new Progress();
 
 
-    function startSearch() {
-        $('.skeleton').addClass('loading')
-        progress.progress = 0
-        searchButton.visible = false
-        progress.visible = true
-    }
+	function startSearch() {
+		$('.skeleton').addClass('loading')
+		progress.progress = 0
+		searchButton.visible = false
+		progress.visible = true
+	}
 
-    function finishSearch() {
-        $('.skeleton').removeClass('loading')
-        searchButton.visible = true
-        progress.visible = false
-    }
+	function finishSearch() {
+		$('.skeleton').removeClass('loading')
+		searchButton.visible = true
+		progress.visible = false
+	}
 
-    function dummyLoading() {
-        new CountdownTimer(
-            100,
-            20,
-            1000,
-            (timeLeft)=> {
-                progress.progress = 100 - timeLeft
-            },
-            ()=> {
-                finishSearch()
-            }
-        )
-    }
+	function dummyLoading() {
+		new CountdownTimer(
+			100,
+			20,
+			1000,
+			(timeLeft) => {
+				progress.progress = 100 - timeLeft
+			},
+			() => {
+				finishSearch()
+			}
+		)
+	}
 
-    searchButton.onClick(function () {
-        startSearch();
-        dummyLoading()
-    })
+	searchButton.onClick(function () {
+		startSearch();
+		dummyLoading()
+	})
 
 
 
@@ -220,23 +220,23 @@ window.addEventListener('load', function () {
 	});
 
 	function showLoadingCircle() {
-        $('.circular-loading__circle')[0].setAttribute('stroke-dasharray', "0, 100");
+		$('.circular-loading__circle')[0].setAttribute('stroke-dasharray', "0, 100");
 		$('.attach-file__circular-loading').addClass('loading');
 
-        new CountdownTimer(
-            100,
-            1,
-            50,
-            (timeLeft)=> {
-                let percent = 100 - timeLeft
-                $('.circular-loading__circle')[0].setAttribute('stroke-dasharray', `${percent}, 100`);
-                $('.attach-file__wrap-file-size .attach-file__loading-value').text(`${percent}%`)
-            },
-            ()=> {
-                hideLoadingCircle()
-			    $('.attach-file__input-file-clear').addClass('visible')
-            }
-        )
+		new CountdownTimer(
+			100,
+			1,
+			50,
+			(timeLeft) => {
+				let percent = 100 - timeLeft
+				$('.circular-loading__circle')[0].setAttribute('stroke-dasharray', `${percent}, 100`);
+				$('.attach-file__wrap-file-size .attach-file__loading-value').text(`${percent}%`)
+			},
+			() => {
+				hideLoadingCircle()
+				$('.attach-file__input-file-clear').addClass('visible')
+			}
+		)
 	}
 
 	function hideLoadingCircle() {
@@ -244,7 +244,7 @@ window.addEventListener('load', function () {
 	}
 
 	function clearFiles(e) {
-        $('.attach-file__input-file').val('')
+		$('.attach-file__input-file').val('')
 		e.closest('.attach-file__wrap-input-file').find('.attach-file__label-file-text').html(labelTextDefault);
 		$('.attach-file__wrap-input-file').removeClass('added');
 		$('.attach-file__input-file-clear').removeClass('visible')
@@ -325,9 +325,9 @@ window.addEventListener('load', function () {
 		event.stopPropagation(); // Останавливаем передачу клика вверх, чтобы не закрылось окно
 	});
 	$('.popup__close, .popup').on('click', function () {
-
-		if ($('.popup').hasClass('open')) {
-
+		if ($(this).hasClass('popup-search-finish')) {
+			return
+		} else if ($('.popup').hasClass('open')) {
 			closePopup()
 			closeLoading()
 			/**/
@@ -435,7 +435,8 @@ window.addEventListener('load', function () {
 
 	/*----------------------------------- */
 
-	$('.result-search__wrap-selected').on('click', function () {
+	$('.result-search__wrap-selected').on('click', function (e) {
+		e.stopPropagation()
 		if (!$(this).find('.result-search__selector').hasClass('hidden')) {
 			closeSelectorResult($(this))
 		} else {
@@ -455,19 +456,64 @@ window.addEventListener('load', function () {
 		e.find('.result-search__arrow-for-selector').removeClass('open')
 	}
 
-	/*----------------------------------- */
+
+	$(document).on('click', function (e) { // событие клика по веб-документу
+		if ($('.result-search__selector:not(.hidden)')) {
+			let div = $('.result-search__selector:not(.hidden)'); // тут указываем элемент
+			if (!div.is(e.target) // если клик был не по нашему блоку
+				&& div.has(e.target).length === 0) { // и не по его дочерним элементам
+					closeSelectorResult(div.parents('.result-search__wrap-selected'))// скрываем его
+			}
+		}
+
+	});
 
 	/*----------------------------------- */
 
-	$('.result-search__checkbox').on('click', function () {
-		if (!$(this).hasClass('_checked')) {
-			$(this).addClass('_checked')
-		} else {
+	/*----------------------------------- */
+
+
+
+	if ($('.select-all-checkbox').hasClass('_checked')) {
+		$('.result-search__checkbox').addClass('_checked')
+		if ($('.result-search__checkbox').parents('.result-search__item').hasClass('not-result')) {
+			$('.result-search__item.not-result').find('.result-search__checkbox').removeClass('_checked')
+		}
+	}
+
+
+
+	$('.select-all-checkbox').on('click', function () {
+		if ($(this).hasClass('_checked')) {
 			$(this).removeClass('_checked')
+			$('.result-search__checkbox').removeClass('_checked')
+		} else {
+			$(this).addClass('_checked')
+			$('.result-search__checkbox').addClass('_checked')
+			if ($('.result-search__checkbox').parents('.result-search__item').hasClass('not-result')) {
+				$('.result-search__item.not-result').find('.result-search__checkbox').removeClass('_checked')
+			}
 		}
 	})
 
+
+	$('.result-search__checkbox').on('click', function () {
+
+		if (!$(this).hasClass('_checked')) {
+			$(this).addClass('_checked')
+
+		} else {
+			$(this).removeClass('_checked')
+			$('.select-all-checkbox').removeClass('_checked')
+		}
+	})
+
+
 	/*----------------------------------- */
+
+
+
+
 });
 
 
